@@ -27,17 +27,13 @@ export class AuthService {
   login(user: User): Observable<Response> {
     return this.http.post<Response>(
       CONSTANST.routes.authorization.login, {
-      txtUsername: user.user_name,
-      txtEmail: user.email,
-      txtPassword: user.password
+      username: user.user_name,
+      password: user.password
     });
   }
 
   logout(): Observable<Response> {
-    return this.http.get<Response>(
-      CONSTANST.routes.authorization.logout,
-      { headers: this.headers }
-    );
+    return null
   }
 
   hasToken(): boolean {

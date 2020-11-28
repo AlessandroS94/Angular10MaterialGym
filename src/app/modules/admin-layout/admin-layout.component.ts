@@ -59,14 +59,10 @@ export class AdminLayoutComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.authService.logout().subscribe((data: any) => {
-          if (data.success) {
             this.authService.loggedIn.next(false);
             localStorage.removeItem('token');
             this.router.navigate(['/login']);
           }
-        });
-      }
     });
   }
 
