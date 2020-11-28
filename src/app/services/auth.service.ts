@@ -32,10 +32,6 @@ export class AuthService {
     });
   }
 
-  logout(): Observable<Response> {
-    return null
-  }
-
   hasToken(): boolean {
     return !!localStorage.getItem('token');
   }

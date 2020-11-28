@@ -1,4 +1,4 @@
-const HOST = 'http://localhost:3000';
+const HOST = 'http://localhost:8080';
 
 export const CONSTANST = {
     permissions: {},
