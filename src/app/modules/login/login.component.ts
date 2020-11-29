@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 
 import { AuthService } from '../../services/auth.service';
 import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
+import {ConfirmComponent} from '../../components/confirm/confirm.component';
 
 @Component({
   selector: 'app-login',
@@ -17,11 +19,13 @@ export class LoginComponent implements OnInit {
   public form: FormGroup;
   public isLogin = false;
 
+
   constructor(
       private fb: FormBuilder,
       private authService: AuthService,
       private router: Router,
       public snack: MatSnackBar,
+      public dialog: MatDialog
   ) { }
 
   // tslint:disable-next-line:typedef
@@ -80,12 +84,31 @@ export class LoginComponent implements OnInit {
             }
           },
           (error) => {
+            this.openDialog();
             console.log(error);
             this.isLogin = false;
 
           }
       );
     }
+  }
+
+  openDialog(): void {
+      const dialogRef = this.dialog.open(ConfirmComponent, {
+          width: '250px',
+          data: {
+              title: 'Login',
+              message: 'Username o password non corrette',
+              buttonCancel: 'Riprova',
+              buttonOk: 'Torna alla Home'
+          }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+          if (result) {
+              this.authService.loggedIn.next(false);
+              this.router.navigate(['']);
+          }
+      });
   }
 
 }

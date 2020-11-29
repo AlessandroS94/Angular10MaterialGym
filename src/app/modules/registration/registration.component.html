@@ -1,5 +1,10 @@
+
 <div class="signin-content animated fadeIn">
+
     <mat-card>
+        <button mat-icon-button color="primary" routerLink="" aria-label="Example icon button with a home icon">
+            <mat-icon>home</mat-icon>
+        </button>
         <mat-card-content>
             <img src="assets/img/1.png" width="200px" onmousedown="return false;">
             <form [formGroup]="form" (ngSubmit)="registration()">
@@ -10,31 +15,31 @@
                         Inserisci una username più lunga
                     </mat-error>
                 </mat-form-field>
-                <mat-form-field class="full-width-input separate">
+                <mat-form-field class="full-width-input ">
                     <input matInput type="password" placeholder="Password" formControlName="password" required>
                     <mat-error *ngIf="isFieldInvalid('password')">
                         Inserisci la tua password più lunga
                     </mat-error>
                 </mat-form-field>
 
-                <mat-form-field class="full-width-input separate">
+                <mat-form-field class="full-width-input ">
                     <input matInput type="email" placeholder="Email" formControlName="email" required>
                 </mat-form-field>
-                <mat-form-field class="full-width-input separate">
+                <mat-form-field class="full-width-input ">
                     <input matInput type="text" placeholder="Nome" formControlName="nome" required>
                     <mat-error *ngIf="isFieldInvalid('nome')">
                         Inserisci il tuo nome
                     </mat-error>
                 </mat-form-field>
 
-                <mat-form-field class="full-width-input separate">
+                <mat-form-field class="full-width-input separate ">
                     <input matInput type="text" placeholder="Cognome" formControlName="cognome" required>
                     <mat-error *ngIf="isFieldInvalid('cognome')">
                         Inserisci il tuo cognome
                     </mat-error>
                 </mat-form-field>
 
-                <mat-form-field class="full-width-input separate">
+                <mat-form-field class="full-width-input separate ">
                     <input matInput type="date" placeholder="Data di Nascita" formControlName="dataNascita" required>
                 </mat-form-field>
 
@@ -54,6 +59,7 @@
                         </button>
                     </div>
                 </div>
+
             </form>
 
             <ng-template #loginText>
