@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
     private router: Router
   ) { }
 
+  // tslint:disable-next-line:typedef
   ngOnInit() {
     if (!this.authService.loggedIn.getValue()) {
       this.router.navigate(['/login']);

@@ -6,7 +6,9 @@ import { AuthGuard } from './guards/auth.guard';
 
 // LAYOUTS
 import { AdminLayoutComponent } from './modules/admin-layout/admin-layout.component';
-import { LoginLayoutComponent } from './modules/login-layout/login-layout.component';
+
+import {LoginComponent} from './modules/login/login.component';
+import { HomeComponent} from './modules/home/home.component';
 
 /*CON LA CREACIÓN DEL ARCHIVO INDEX.PAGES NOS AHORRAMOS TENER QUE HACER
 UNA IMPORTACIÓN POR CADA COMPONENTE DE LAS VISTAS*/
@@ -17,36 +19,28 @@ import {
 // ROUTES
 const routes: Routes = [
   {
-    path: '',
+    path: 'dashboard',
     component: AdminLayoutComponent,
     canActivate: [AuthGuard],
     children: [
       {
-        path: '',
+        path: 'dashboard',
         loadChildren: './modules/dashboard/dashboard.module#DashboardModule',
       },
       {
-        path: 'clients',
+        path: 'dashboard/clients',
         loadChildren: './modules/client/client.module#ClientModule',
       },
       {
-        path: 'users',
+        path: 'dashboard/users',
         loadChildren: './modules/user/user.module#UserModule',
       },
     ]
   },
-  {
-    path: '',
-    component: LoginLayoutComponent,
-    children: [
-      {
-        path: 'login',
-        loadChildren: './modules/login-layout/login/login.module#LoginModule',
-      },
-      { path: '404', component: NotFoundComponent },
-      { path: '**', redirectTo: '/404' }
-    ]
-  }
+  { path: 'login', component: LoginComponent },
+  { path: '', component: HomeComponent },
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '/404' }
 ];
 
 @NgModule({

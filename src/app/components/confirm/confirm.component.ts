@@ -9,8 +9,6 @@ import { DialogData } from '../../models/dialog-data';
 export class ConfirmComponent {
 
   constructor(
-    public dialogRef: MatDialogRef<ConfirmComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) { }
 
 }

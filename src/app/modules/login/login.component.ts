@@ -3,8 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { AuthService } from '../../../services/auth.service';
-import { SnackbarComponent } from '../../../components/snackbar/snackbar.component';
+import { AuthService } from '../../services/auth.service';
+import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-login',
@@ -18,10 +18,10 @@ export class LoginComponent implements OnInit {
   public isLogin = false;
 
   constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router,
-    public snack: MatSnackBar,
+      private fb: FormBuilder,
+      private authService: AuthService,
+      private router: Router,
+      public snack: MatSnackBar,
   ) { }
 
   ngOnInit() {
@@ -53,33 +53,35 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line:typedef
   public isFieldInvalid(field: string) {
     if (this.form.get(field).touched) {
       return !this.form.get(field).valid;
     }
   }
 
+  // tslint:disable-next-line:typedef
   public login() {
     if (this.form.valid) {
       this.isLogin = true;
       this.authService.login(this.form.value).subscribe(
-        (data: any) => {
-          this.isLogin = false;
-          if (data) {
-            this.authService.loggedIn.next(true);
-            localStorage.setItem('token', data.token);
-            this.router.navigate(['/']);
-          } else {
-            this.snack.openFromComponent(SnackbarComponent, {
-              data: { data: data },
-              duration: 3000
-            });
+          (data: any) => {
+            this.isLogin = false;
+            if (data) {
+              this.authService.loggedIn.next(true);
+              localStorage.setItem('token', data.token);
+              this.router.navigate(['/dashboard']);
+            } else {
+              this.snack.openFromComponent(SnackbarComponent, {
+                data: { data },
+                duration: 3000
+              });
+            }
+          },
+          (error) => {
+            console.log(error);
+            this.isLogin = false;
           }
-        },
-        (error) => {
-          console.log(error);
-          this.isLogin = false;
-        }
       );
     }
   }

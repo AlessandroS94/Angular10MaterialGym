@@ -1,5 +1,5 @@
 <mat-toolbar class="toolbar" color="accent">
-  <h1 class="menu" routerLink="/" style="cursor: pointer;">Angular-CRUD</h1>
+  <h1 class="menu" routerLink="/dashboard" style="cursor: pointer;">Gym Personal</h1>
   <span class="spacer"></span>
 
   <!-- <button mat-icon-button [matMenuTriggerFor]="menu" mdTooltip="Change theme">
@@ -34,17 +34,17 @@
 <mat-drawer-container>
   <mat-drawer mode="side" opened>
     <mat-nav-list>
-      <a mat-list-item routerLink="/">
+      <a mat-list-item routerLink="/dashboard">
         <i class="material-icons">dashboard</i>
         &nbsp;Dashboard
       </a>
 
-      <a mat-list-item routerLink="/clients">
+      <a mat-list-item routerLink="dashboard/clients">
         <i class="material-icons">web</i>
         &nbsp;Clients
       </a>
 
-      <a mat-list-item routerLink="/users">
+      <a mat-list-item routerLink="dashboard/users">
         <i class="material-icons">person</i>
         &nbsp;Users
       </a>
