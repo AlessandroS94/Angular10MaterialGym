@@ -13,7 +13,7 @@ import {SnackbarComponent} from '../../components/snackbar/snackbar.component';
 export class RegistrationComponent implements OnInit {
 
   public form: FormGroup;
-  public isLogin = false;
+  public isRegistration = false;
 
   constructor(
       private fb: FormBuilder,
@@ -33,11 +33,17 @@ export class RegistrationComponent implements OnInit {
 
   private initLoginForm(): void {
     this.form = this.fb.group({
+      email: [
+        null,
+        [
+          Validators.required,
+        ]
+      ],
       user_name: [
         null,
         [
           Validators.required,
-          Validators.minLength(3),
+          Validators.minLength(2),
           Validators.maxLength(20)
         ]
       ],
@@ -45,7 +51,7 @@ export class RegistrationComponent implements OnInit {
         null,
         [
           Validators.required,
-          Validators.minLength(6),
+          Validators.minLength(2),
           Validators.maxLength(12)
         ]
       ],
@@ -53,7 +59,7 @@ export class RegistrationComponent implements OnInit {
         null,
         [
           Validators.required,
-          Validators.minLength(6),
+          Validators.minLength(2),
           Validators.maxLength(12)
         ]
       ],
@@ -61,7 +67,7 @@ export class RegistrationComponent implements OnInit {
         null,
         [
           Validators.required,
-          Validators.minLength(6),
+          Validators.minLength(2),
           Validators.maxLength(12)
         ]
       ],
@@ -69,8 +75,6 @@ export class RegistrationComponent implements OnInit {
         null,
         [
           Validators.required,
-          Validators.minLength(6),
-          Validators.maxLength(12)
         ]
       ]
     });
@@ -86,10 +90,11 @@ export class RegistrationComponent implements OnInit {
   // tslint:disable-next-line:typedef
   public registration() {
     if (this.form.valid) {
-      this.isLogin = true;
+      this.isRegistration = true;
       this.authService.registration(this.form.value).subscribe(
           (data: any) => {
-            this.isLogin = false;
+            console.log(data);
+            this.isRegistration = false;
             if (data) {
               this.router.navigate(['/login']);
             } else {
@@ -101,7 +106,7 @@ export class RegistrationComponent implements OnInit {
           },
           (error) => {
             console.log(error);
-            this.isLogin = false;
+            this.isRegistration = false;
           }
       );
     }

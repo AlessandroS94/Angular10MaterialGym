@@ -3,44 +3,57 @@
         <mat-card-content>
             <img src="assets/img/1.png" width="200px" onmousedown="return false;">
             <form [formGroup]="form" (ngSubmit)="registration()">
-                <mat-form-field class="full-width-input">
-                    <input matInput type="text" placeholder="User" formControlName="user_name" required>
+
+                <mat-form-field class="full-width-input ">
+                    <input matInput type="text" placeholder="Username" formControlName="user_name" required>
                     <mat-error *ngIf="isFieldInvalid('user_name')">
-                        Please enter a valid username or email
+                        Inserisci una username più lunga
                     </mat-error>
                 </mat-form-field>
-
                 <mat-form-field class="full-width-input separate">
                     <input matInput type="password" placeholder="Password" formControlName="password" required>
                     <mat-error *ngIf="isFieldInvalid('password')">
-                        Please enter a valid password
+                        Inserisci la tua password più lunga
                     </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="full-width-input separate">
-                    <input matInput type="password" placeholder="Nome" formControlName="nome" required>
+                    <input matInput type="email" placeholder="Email" formControlName="email" required>
+                </mat-form-field>
+                <mat-form-field class="full-width-input separate">
+                    <input matInput type="text" placeholder="Nome" formControlName="nome" required>
                     <mat-error *ngIf="isFieldInvalid('nome')">
                         Inserisci il tuo nome
                     </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="full-width-input separate">
-                    <input matInput type="password" placeholder="Cognome" formControlName="cognome" required>
+                    <input matInput type="text" placeholder="Cognome" formControlName="cognome" required>
                     <mat-error *ngIf="isFieldInvalid('cognome')">
                         Inserisci il tuo cognome
                     </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="full-width-input separate">
-                    <input matInput type="password" placeholder="Data di Nascita" formControlName="dataNascita" required>
-                    <mat-error *ngIf="isFieldInvalid('dataNascita')">
-                        Inserisci la tua data di nascita
-                    </mat-error>
+                    <input matInput type="date" placeholder="Data di Nascita" formControlName="dataNascita" required>
                 </mat-form-field>
 
-                <button mat-raised-button color="primary" type="submit" style="width: 100%;" [disabled]="form.invalid || isLogin">
-                    <div *ngIf="isLogin; else loginText">Loading ...</div>
-                </button>
+                <div class="example-button-row separate">
+                    <div class="example-flex-container">
+                        <button mat-raised-button color="primary" type="submit" style="width: 100%;"
+                                [disabled]="form.invalid || isRegistration">
+                            <div *ngIf="isRegistration; else loginText">Loading ...</div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="example-button-row">
+                    <div class="example-flex-container">
+                        <button mat-raised-button color="primary" routerLink="/login" style="width: 100%;">
+                            <div>Fai la login</div>
+                        </button>
+                    </div>
+                </div>
             </form>
 
             <ng-template #loginText>

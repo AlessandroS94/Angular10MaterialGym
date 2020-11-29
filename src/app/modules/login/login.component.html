@@ -1,10 +1,12 @@
+
+
 <div class="signin-content animated fadeIn">
     <mat-card>
         <mat-card-content>
             <img src="assets/img/1.png" width="200px" onmousedown="return false;">
             <form [formGroup]="form" (ngSubmit)="login()">
                 <mat-form-field class="full-width-input">
-                    <input matInput type="text" placeholder="User" formControlName="user_name" required>
+                    <input matInput type="text" placeholder="Username" formControlName="user_name" required>
                     <mat-error *ngIf="isFieldInvalid('user_name')">
                         Please enter a valid username or email
                     </mat-error>
@@ -17,26 +19,24 @@
                     </mat-error>
                 </mat-form-field>
 
-                <section>
-                    <div class="example-button-row">
-                        <div class="example-flex-container">
-                            <button mat-raised-button color="primary" type="submit" style="width: 100%;"
-                                    [disabled]="form.invalid || isLogin">
-                                <div *ngIf="isLogin; else loginText">Loading ...</div>
-                            </button>
-                        </div>
+
+                <div class="example-button-row separate">
+                    <div class="example-flex-container">
+                        <button mat-raised-button color="primary" type="submit" style="width: 100%;"
+                                [disabled]="form.invalid || isLogin">
+                            <div *ngIf="isLogin; else loginText">Loading ...</div>
+                        </button>
                     </div>
-                </section>
-                <mat-divider></mat-divider>
-                <section>
-                    <div class="example-button-row">
-                        <div class="example-flex-container">
-                            <button mat-raised-button color="primary" routerLink="/register" style="width: 100%;">
-                                <div>Registrati</div>
-                            </button>
-                        </div>
+                </div>
+
+                <div class="example-button-row">
+                    <div class="example-flex-container">
+                        <button mat-raised-button color="primary" routerLink="/register" style="width: 100%;">
+                            <div>Registrati</div>
+                        </button>
                     </div>
-                </section>
+                </div>
+
             </form>
 
             <ng-template #loginText>
