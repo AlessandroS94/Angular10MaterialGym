@@ -1,0 +1,51 @@
+<div class="signin-content animated fadeIn">
+    <mat-card>
+        <mat-card-content>
+            <img src="assets/img/1.png" width="200px" onmousedown="return false;">
+            <form [formGroup]="form" (ngSubmit)="registration()">
+                <mat-form-field class="full-width-input">
+                    <input matInput type="text" placeholder="User" formControlName="user_name" required>
+                    <mat-error *ngIf="isFieldInvalid('user_name')">
+                        Please enter a valid username or email
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width-input separate">
+                    <input matInput type="password" placeholder="Password" formControlName="password" required>
+                    <mat-error *ngIf="isFieldInvalid('password')">
+                        Please enter a valid password
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width-input separate">
+                    <input matInput type="password" placeholder="Nome" formControlName="nome" required>
+                    <mat-error *ngIf="isFieldInvalid('nome')">
+                        Inserisci il tuo nome
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width-input separate">
+                    <input matInput type="password" placeholder="Cognome" formControlName="cognome" required>
+                    <mat-error *ngIf="isFieldInvalid('cognome')">
+                        Inserisci il tuo cognome
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width-input separate">
+                    <input matInput type="password" placeholder="Data di Nascita" formControlName="dataNascita" required>
+                    <mat-error *ngIf="isFieldInvalid('dataNascita')">
+                        Inserisci la tua data di nascita
+                    </mat-error>
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" type="submit" style="width: 100%;" [disabled]="form.invalid || isLogin">
+                    <div *ngIf="isLogin; else loginText">Loading ...</div>
+                </button>
+            </form>
+
+            <ng-template #loginText>
+                Registration
+            </ng-template>
+        </mat-card-content>
+    </mat-card>
+</div>

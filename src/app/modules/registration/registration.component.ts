@@ -1,19 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
-
-import { AuthService } from '../../services/auth.service';
-import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../services/auth.service';
+import {Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {SnackbarComponent} from '../../components/snackbar/snackbar.component';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  providers: []
+  selector: 'app-registration',
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.scss']
 })
+export class RegistrationComponent implements OnInit {
 
-export class LoginComponent implements OnInit {
   public form: FormGroup;
   public isLogin = false;
 
@@ -50,6 +48,30 @@ export class LoginComponent implements OnInit {
           Validators.minLength(6),
           Validators.maxLength(12)
         ]
+      ],
+      nome: [
+        null,
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(12)
+        ]
+      ],
+      cognome: [
+        null,
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(12)
+        ]
+      ],
+      dataNascita: [
+        null,
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(12)
+        ]
       ]
     });
   }
@@ -62,16 +84,14 @@ export class LoginComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  public login() {
+  public registration() {
     if (this.form.valid) {
       this.isLogin = true;
-      this.authService.login(this.form.value).subscribe(
+      this.authService.registration(this.form.value).subscribe(
           (data: any) => {
             this.isLogin = false;
             if (data) {
-              this.authService.loggedIn.next(true);
-              localStorage.setItem('token', data.token);
-              this.router.navigate(['/dashboard']);
+              this.router.navigate(['/login']);
             } else {
               this.snack.openFromComponent(SnackbarComponent, {
                 data: { data },

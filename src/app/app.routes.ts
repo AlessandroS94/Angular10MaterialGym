@@ -4,9 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 // FILTER
 import { AuthGuard } from './guards/auth.guard';
 
-// LAYOUTS
+// LAYOUTS FOR DASHBOARD
 import { AdminLayoutComponent } from './modules/admin-layout/admin-layout.component';
 
+// COMPONENT
+import {RegistrationComponent} from './modules/registration/registration.component';
 import {LoginComponent} from './modules/login/login.component';
 import { HomeComponent} from './modules/home/home.component';
 
@@ -38,6 +40,7 @@ const routes: Routes = [
     ]
   },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegistrationComponent },
   { path: '', component: HomeComponent },
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' }

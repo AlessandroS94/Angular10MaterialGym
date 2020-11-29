@@ -32,6 +32,19 @@ export class AuthService {
     });
   }
 
+
+  registration(user: User): Observable<Response> {
+    return this.http.post<Response>(
+        CONSTANST.routes.authorization.registration, {
+          username: user.user_name,
+          password: user.password,
+          email: user.email,
+          nome: user.nome,
+          cognome: user.cognome,
+          dataNascita: user.dataNascita
+        });
+  }
+
   hasToken(): boolean {
     return !!localStorage.getItem('token');
   }

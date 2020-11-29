@@ -5,7 +5,7 @@ export const CONSTANST = {
     routes: {
         authorization: {
             login: HOST + '/api/auth/signin',
-            logout: HOST + '/api/auth/logout'
+            registration: HOST + '/api/auth/register'
         },
         client: {
             list: HOST + '/api/client',

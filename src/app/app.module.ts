@@ -34,6 +34,7 @@ import {AdminLayoutModule} from './modules/admin-layout/admin-layout.module';
 import {HomeComponent} from './modules/home/home.component';
 import {MatCarouselModule} from '@ngmodule/material-carousel';
 import { LoginComponent } from './modules/login/login.component';
+import { RegistrationComponent } from './modules/registration/registration.component';
 
 @NgModule({
     declarations: [ /*DECLARACIÓN DE COMPONENTES*/
@@ -45,6 +46,7 @@ import { LoginComponent } from './modules/login/login.component';
         SnackbarComponent,
         HomeComponent,
         LoginComponent,
+        RegistrationComponent,
     ],
     imports: [ /*DECLARACIÓN DE MODULOS*/
         SharedModule,
