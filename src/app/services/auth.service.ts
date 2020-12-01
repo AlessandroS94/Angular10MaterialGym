@@ -12,6 +12,7 @@ import { CONSTANST } from '../utils/constanst';
 export class AuthService {
   public loggedIn = new BehaviorSubject<boolean>(this.hasToken());
 
+    // tslint:disable-next-line:typedef
   get isLoggedIn() {
     return this.loggedIn.asObservable();
   }

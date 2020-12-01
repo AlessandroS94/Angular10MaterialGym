@@ -1,36 +1,19 @@
 <div class="animated fadeIn dashboard">
-    <mat-card class="dashboard-item item-teal float-item" routerLink="dashboard/clients">
-        <i class="material-icons dashboard-icon">Persone</i>
+    <h3 > Ciao {{email}}</h3>
+    <mat-card class="dashboard-item item-teal float-item" *ngIf="isUser" routerLink="dashboard/esercizio">
+        <i class="material-icons dashboard-icon">fitness_center</i>
         <mat-card-header>
             <mat-card-title>
-                <h1>Clienti</h1>
+                <h3>Esercizio</h3>
             </mat-card-title>
         </mat-card-header>
     </mat-card>
 
-    <mat-card class="dashboard-item item-brown float-item" routerLink="dashboard/users">
-        <i class="material-icons dashboard-icon">Utenti verificati</i>
+    <mat-card class="dashboard-item item-brown float-item" *ngIf="isUser" routerLink="dashboard/dieta">
+        <i class="material-icons dashboard-icon">fastfood</i>
         <mat-card-header>
             <mat-card-title>
-                <h1>Utenti</h1>
-            </mat-card-title>
-        </mat-card-header>
-    </mat-card>
-
-    <mat-card class="dashboard-item item-brown float-item" routerLink="dashboard/exercises">
-        <i class="material-icons dashboard-icon">Esercizi</i>
-        <mat-card-header>
-            <mat-card-title>
-                <h1>Esercizi</h1>
-            </mat-card-title>
-        </mat-card-header>
-    </mat-card>
-
-    <mat-card class="dashboard-item item-brown float-item" routerLink="dashboard/food">
-        <i class="material-icons dashboard-icon">Dieta</i>
-        <mat-card-header>
-            <mat-card-title>
-                <h1>Dieta</h1>
+                <h3>Dieta</h3>
             </mat-card-title>
         </mat-card-header>
     </mat-card>

@@ -2,26 +2,15 @@
   <h1 class="menu" routerLink="/dashboard" style="cursor: pointer;">Gym Personal</h1>
   <span class="spacer"></span>
 
-  <!-- <button mat-icon-button [matMenuTriggerFor]="menu" mdTooltip="Change theme">
-    <mat-icon>format_color_fill</mat-icon>
-  </button> -->
-
-  <!-- <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="null">Light</button> -->
-    <!-- <button mat-menu-item (click)="changeTheme('light-theme')">Light</button> -->
-    <!-- <button mat-menu-item (click)="null">Dark</button> -->
-    <!-- <button mat-menu-item (click)="changeTheme('dark-theme')">Dark</button> -->
-  <!-- </mat-menu> -->
-
   <button mat-icon-button [matMenuTriggerFor]="profileMenu">
     <mat-icon>person_pin</mat-icon>
   </button>
 
   <!--USER PROFILE MENU-->
   <mat-menu #profileMenu="matMenu">
-    <button mat-menu-item disabled>
-      <mat-icon>supervisor_account</mat-icon>
-      <span>Modify account</span>
+    <button mat-menu-item routerLink="">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
     </button>
 
     <button mat-menu-item (click)="openDialog()">
@@ -39,19 +28,29 @@
         &nbsp;Dashboard
       </a>
 
-      <a mat-list-item routerLink="dashboard/clients">
-        <i class="material-icons">web</i>
-        &nbsp;Clients
+      <a mat-list-item *ngIf="isAdmin"  routerLink="dashboard/alimenti">
+        <i class="material-icons">fastfood</i>
+        &nbsp;Crea Alimenti
       </a>
 
-      <a mat-list-item routerLink="dashboard/users">
-        <i class="material-icons">person</i>
-        &nbsp;Users
+      <a mat-list-item *ngIf="isAdmin"  routerLink="dashboard/diete">
+        <i class="material-icons">assignment</i>
+        &nbsp;Assegna Dieta
       </a>
 
-      <a mat-list-item routerLink="/404">
-        <i class="material-icons">error_outline</i>
-        &nbsp;Error page
+      <a mat-list-item *ngIf="isAdmin"  routerLink="dashboard/creaEsercizio">
+        <i class="material-icons">fitness_center</i>
+        &nbsp;Crea Esercizio
+      </a>
+
+      <a mat-list-item *ngIf="isUser"  routerLink="dashboard/dieta">
+        <i class="material-icons">assignment</i>
+        &nbsp;Leggi Dieta
+      </a>
+
+      <a mat-list-item *ngIf="isUser"  routerLink="dashboard/esercizio">
+        <i class="material-icons">fitness_center</i>
+        &nbsp;Leggi Esercizi
       </a>
     </mat-nav-list>
   </mat-drawer>

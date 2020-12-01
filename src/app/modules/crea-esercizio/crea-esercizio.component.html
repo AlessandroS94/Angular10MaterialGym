@@ -1,0 +1,44 @@
+<mat-card>
+    <mat-card-header>
+        <i class="material-icons">fitness_center</i>
+        <mat-card-title>Esercizio</mat-card-title>
+        <mat-card-subtitle>Aggiungi e rimuovi esercizi</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="insert()">
+        <p>
+            <mat-form-field appearance="standard">
+                <mat-label>Nome esercizio</mat-label>
+                <input formControlName="nome" matInput required placeholder="Es Panca Piana">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="standard">
+                <mat-label>Descrizione</mat-label>
+                <input formControlName="descrizione" required matInput placeholder="Esercizio svolto da terra....">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="standard">
+                <mat-label>Url</mat-label>
+                <input formControlName="url" required matInput placeholder="https://youtube.com">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="standard">
+                <mat-label>Ripetizioni</mat-label>
+                <input formControlName="ripetizioni" required matInput placeholder="40x3">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="standard">
+                <mat-label>Pesi</mat-label>
+                <input formControlName="pesi" required matInput placeholder="50KG">
+            </mat-form-field>
+        </p>
+        <button mat-raised-button type="submit" color="accent">Salva</button>
+        </form>
+        <button mat-raised-button (click)="list()" color="accent">List</button>
+    </mat-card-content>
+</mat-card>
+

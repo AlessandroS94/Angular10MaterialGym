@@ -1,5 +1,5 @@
 const HOST = 'http://localhost:8080';
-
+const HOSTLOGED = 'http://localhost:8080/gym';
 export const CONSTANST = {
     permissions: {},
     routes: {
@@ -7,13 +7,14 @@ export const CONSTANST = {
             login: HOST + '/api/auth/signin',
             registration: HOST + '/api/auth/register'
         },
-        client: {
-            list: HOST + '/api/client',
-            delete: HOST + '/api/client/delete/:id',
-            save: HOST + '/api/client/save',
-            get: HOST + '/api/client/:id'
+        user: {},
+        alimenti: {
+            insert: HOSTLOGED + '/api/v1/alimenti'
         },
-        user: {}
+        esercizio: {
+            insert: HOSTLOGED + '/api/v1/esercizi',
+            list: HOSTLOGED + '/api/v1/esercizi'
+        }
     },
     lang: {},
     session: {},

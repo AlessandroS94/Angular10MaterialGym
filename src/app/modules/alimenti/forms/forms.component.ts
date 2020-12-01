@@ -3,9 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
-import { ClientService } from '../../../services/client.service';
 import { SnackbarComponent } from '../../../components/snackbar/snackbar.component';
-import { Client } from '../../../models/client';
 
 @Component({
   selector: 'app-forms',
@@ -21,7 +19,6 @@ export class FormsComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA)
     public data: any,
     private fb: FormBuilder,
-    private clientService: ClientService,
     public snack: MatSnackBar
   ) { }
 
@@ -29,17 +26,20 @@ export class FormsComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  // tslint:disable-next-line:typedef
   ngOnInit() {
     this.initializeForm();
   }
 
+  // tslint:disable-next-line:typedef
   openSnack(data: any) {
     this.snack.openFromComponent(SnackbarComponent, {
-      data: { data: data },
+      data: { data },
       duration: 3000
     });
   }
 
+  // tslint:disable-next-line:typedef
   private initializeForm() {
     const IS_EDITING = this.data.action === 'edit';
     const data = this.data.data;
@@ -54,25 +54,28 @@ export class FormsComponent implements OnInit {
   }
 
   public save(form: FormGroup) {
-    this.clientService.save(form.value).subscribe((data: any) => {
+    /*this.clientService.save(form.value).subscribe((data: any) => {
       this.openSnack(data);
 
       if (data.success) {
         this.dialogRef.close(true);
       }
-    });
+    });*/
   }
 
+  // tslint:disable-next-line:typedef
   public getNameErrorMessage() {
     return this.frm.controls.first_name.hasError('required') ? 'First name is required' :
       this.frm.controls.name.hasError('minlength') ? 'Al menos 2 caracteres' : '';
   }
 
+  // tslint:disable-next-line:typedef
   public getLastNameErrorMessage() {
     return this.frm.controls.last_name.hasError('required') ? 'Last name is required' :
       this.frm.controls.name.hasError('minlength') ? 'Al menos 2 caracteres' : '';
   }
 
+  // tslint:disable-next-line:typedef
   public getAgeErrorMessage() {
     return this.frm.controls.age.hasError('required') ? 'Age is required' :
       this.frm.controls.age.hasError('minlength') ? 'Al menos un numero debe ser ingresado' : '';

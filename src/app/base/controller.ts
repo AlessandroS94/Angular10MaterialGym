@@ -1,5 +1,5 @@
 import { PageEvent } from '@angular/material/paginator';
-import { Client } from '../models/client';
+import {Alimento} from '../models/alimento';
 
 export abstract class Controller {
 
@@ -29,10 +29,10 @@ export abstract class Controller {
 
   abstract getData(): void;
 
-  abstract edit(client: Client): void;
+  abstract edit(food: Alimento): void;
 
   abstract save(): void;
 
-  abstract delete(client: Client): void;
+  abstract delete(food: Alimento): void;
 
 }
