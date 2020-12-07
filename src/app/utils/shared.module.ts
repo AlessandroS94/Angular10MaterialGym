@@ -1,10 +1,10 @@
-
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialComponentsModule } from './material.module';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {MaterialComponentsModule} from './material.module';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {YouTubePlayerModule} from '@angular/youtube-player';
 
 @NgModule({
     imports: [
@@ -13,14 +13,19 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
         FlexLayoutModule,
         ReactiveFormsModule,
         MaterialComponentsModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        YouTubePlayerModule
+
     ],
     exports: [
         CommonModule,
         FormsModule,
         FlexLayoutModule,
         ReactiveFormsModule,
-        MaterialComponentsModule
+        MaterialComponentsModule,
+        YouTubePlayerModule
+
     ]
 })
-export class SharedModule { }
+export class SharedModule {
+}

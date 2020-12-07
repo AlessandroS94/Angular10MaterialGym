@@ -1,64 +1,95 @@
 <mat-toolbar class="toolbar" color="accent">
-  <h1 class="menu" routerLink="/dashboard" style="cursor: pointer;">Gym Personal</h1>
-  <span class="spacer"></span>
+    <button *ngIf="!menu" (click)="show_hideMenu()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <button *ngIf="menu" (click)="show_hideMenu()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>close</mat-icon>
+    </button>
+    <h1 class="menu" routerLink="/dashboard" style="cursor: pointer;">Gym Personal</h1>
+    <span class="spacer"></span>
 
-  <button mat-icon-button [matMenuTriggerFor]="profileMenu">
-    <mat-icon>person_pin</mat-icon>
-  </button>
-
-  <!--USER PROFILE MENU-->
-  <mat-menu #profileMenu="matMenu">
-    <button mat-menu-item routerLink="">
-      <mat-icon>home</mat-icon>
-      <span>Home</span>
+    <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+        <mat-icon>person_pin</mat-icon>
     </button>
 
-    <button mat-menu-item (click)="openDialog()">
-      <mat-icon>exit_to_app</mat-icon>
-      <span>Logout</span>
-    </button>
-  </mat-menu>
+    <!--USER PROFILE MENU-->
+    <mat-menu #profileMenu="matMenu">
+        <button mat-menu-item routerLink="">
+            <mat-icon>home</mat-icon>
+            <span>Home</span>
+        </button>
+
+        <button mat-menu-item (click)="openDialog()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Logout</span>
+        </button>
+    </mat-menu>
 </mat-toolbar>
 
-<mat-drawer-container>
-  <mat-drawer mode="side" opened>
-    <mat-nav-list>
-      <a mat-list-item routerLink="/dashboard">
-        <i class="material-icons">dashboard</i>
-        &nbsp;Dashboard
-      </a>
+<mat-drawer-container >
+    <mat-drawer mode="side" *ngIf="menu" opened >
+        <mat-nav-list>
+            <a mat-list-item routerLink="/dashboard">
+                <i class="material-icons">dashboard</i>
+                &nbsp;Dashboard
+            </a>
 
-      <a mat-list-item *ngIf="isAdmin"  routerLink="dashboard/alimenti">
-        <i class="material-icons">fastfood</i>
-        &nbsp;Crea Alimenti
-      </a>
+            <a mat-list-item *ngIf="isAdmin" routerLink="dashboard/creaEsercizio">
+                <i class="material-icons">fitness_center</i>
+                &nbsp;Crea Esercizio
+            </a>
 
-      <a mat-list-item *ngIf="isAdmin"  routerLink="dashboard/diete">
-        <i class="material-icons">assignment</i>
-        &nbsp;Assegna Dieta
-      </a>
+            <a mat-list-item *ngIf="isAdmin" routerLink="dashboard/esercizi">
+                <i class="material-icons">fitness_center</i>
+                &nbsp;Visualizza Esercizi
+            </a>
 
-      <a mat-list-item *ngIf="isAdmin"  routerLink="dashboard/creaEsercizio">
-        <i class="material-icons">fitness_center</i>
-        &nbsp;Crea Esercizio
-      </a>
+            <a mat-list-item *ngIf="isAdmin" routerLink="dashboard/creaScheda">
+                <i class="material-icons"> list_alt</i>
+                &nbsp;Crea Scheda
+            </a>
 
-      <a mat-list-item *ngIf="isUser"  routerLink="dashboard/dieta">
-        <i class="material-icons">assignment</i>
-        &nbsp;Leggi Dieta
-      </a>
+            <a mat-list-item *ngIf="isAdmin" routerLink="dashboard/schede">
+                <i class="material-icons"> list_alt</i>
+                &nbsp;Visualizza Schede
+            </a>
 
-      <a mat-list-item *ngIf="isUser"  routerLink="dashboard/esercizio">
-        <i class="material-icons">fitness_center</i>
-        &nbsp;Leggi Esercizi
-      </a>
-    </mat-nav-list>
-  </mat-drawer>
+            <a mat-list-item *ngIf="isUser" routerLink="dashboard/schedaUtente">
+                <i class="material-icons">fitness_center</i>
+                &nbsp;Leggi Esercizi
+            </a>
 
-  <mat-drawer-content>
-    <div class="loading-overlay" #progressBar>
-      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-    </div>
-    <router-outlet></router-outlet>
-  </mat-drawer-content>
+            <a mat-list-item *ngIf="isAdmin" routerLink="dashboard/creaAlimento">
+                <i class="material-icons">fastfood</i>
+                &nbsp;Crea Alimento
+            </a>
+
+            <a mat-list-item *ngIf="isAdmin" routerLink="dashboard/alimenti">
+                <i class="material-icons">fastfood</i>
+                &nbsp;Visualizza Alimenti
+            </a>
+
+            <a mat-list-item *ngIf="isAdmin" routerLink="dashboard/creaDieta">
+                <i class="material-icons">food_bank</i>
+                &nbsp;Crea Dieta
+            </a>
+
+            <a mat-list-item *ngIf="isAdmin" routerLink="dashboard/diete">
+                <i class="material-icons">food_bank</i>
+                &nbsp;Visualizza Diete
+            </a>
+
+            <a mat-list-item *ngIf="isUser" routerLink="dashboard/dieta">
+                <i class="material-icons">food_bank</i>
+                &nbsp;Visualizza Dieta
+            </a>
+        </mat-nav-list>
+    </mat-drawer>
+
+    <mat-drawer-content>
+        <div class="loading-overlay" #progressBar>
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
 </mat-drawer-container>

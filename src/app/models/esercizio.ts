@@ -1,4 +1,5 @@
 export interface Esercizio {
+    id: number;
     descrizione: string;
     nome: string;
     url: string;

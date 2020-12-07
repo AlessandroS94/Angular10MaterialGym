@@ -1,0 +1,44 @@
+<mat-card>
+    <mat-card-header>
+        <i class="material-icons">fastfood</i>
+        <mat-card-title>Alimenti</mat-card-title>
+        <mat-card-subtitle>Aggiungi alimento</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="insert()">
+            <p>
+                <mat-form-field appearance="standard">
+                    <mat-label>Nome alimento</mat-label>
+                    <input formControlName="nome" matInput required placeholder="Es Pane">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="standard">
+                    <mat-label>Descrizione</mat-label>
+                    <input formControlName="descrizione" required matInput placeholder="Esercizio svolto da terra....">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="standard">
+                    <mat-label>Grassi in grammi su 100g</mat-label>
+                    <input formControlName="grassi" required matInput  type="number" placeholder="50g su 100g">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="standard">
+                    <mat-label>Proteine in grammi su 100g</mat-label>
+                    <input formControlName="proteine" required matInput type="number" placeholder="30g su 100g">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="standard">
+                    <mat-label>Carboidrati in grammi su 100g</mat-label>
+                    <input formControlName="carboidrati" required matInput  type="number" placeholder="10g su 100g">
+                </mat-form-field>
+            </p>
+            <button mat-raised-button type="submit" color="accent">Salva</button>
+
+        </form>
+    </mat-card-content>
+</mat-card>
+

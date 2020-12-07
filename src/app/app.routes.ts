@@ -19,6 +19,12 @@ import {AlimentiComponent} from './modules/alimenti/alimenti.component';
 import {
     NotFoundComponent,
 } from './utils/index.pages';
+import {EserciziComponent} from './modules/esercizi/esercizi.component';
+import {CreaSchedaComponent} from './modules/crea-scheda/crea-scheda.component';
+import {SchedeComponent} from './modules/schede/schede.component';
+import {SchedaUserComponent} from './modules/scheda-user/scheda-user.component';
+import {CreaAlimentiComponent} from './modules/crea-alimenti/crea-alimenti.component';
+import {CreaDietaComponent} from './modules/crea-dieta/crea-dieta.component';
 
 // ROUTES
 const routes: Routes = [
@@ -36,25 +42,49 @@ const routes: Routes = [
                 loadChildren: './modules/user/user.module#UserModule',
             },
             {
-                path: 'dashboard/dieta',
-                component: DietaComponent,
+                path: 'dashboard/schedaUtente',
+                component: SchedaUserComponent,
             },
             {
                 path: 'dashboard/esercizio',
                 component: EsercizioComponent,
             },
             {
+                path: 'dashboard/esercizi',
+                component: EserciziComponent,
+            },
+            {
                 path: 'dashboard/creaEsercizio',
                 component: CreaEsercizioComponent,
+            },
+            {
+                path: 'dashboard/creaScheda',
+                component: CreaSchedaComponent,
+            },
+            {
+                path: 'dashboard/schede',
+                component: SchedeComponent,
+            },
+            {
+                path: 'dashboard/alimenti',
+                component: AlimentiComponent,
+            },
+            {
+                path: 'dashboard/creaAlimento',
+                component: CreaAlimentiComponent,
+            },
+            {
+                path: 'dashboard/creaDieta',
+                component: CreaDietaComponent,
             },
             {
                 path: 'dashboard/diete',
                 component: DieteComponent,
             },
             {
-                path: 'dashboard/alimenti',
-                component: AlimentiComponent,
-            }
+                path: 'dashboard/dieta',
+                component: DietaComponent,
+            },
 
         ]
     },

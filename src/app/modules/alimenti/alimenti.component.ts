@@ -1,23 +1,36 @@
-import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
-import {AuthService} from '../../services/auth.service';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import {EsercizioService} from '../../services/esercizio.service';
+import {AlimentiService} from '../../services/alimenti.service';
 
 @Component({
-    selector: 'app-alimenti',
-    templateUrl: './alimenti.component.html',
-    styleUrls: ['./alimenti.component.scss']
+  selector: 'app-alimenti',
+  templateUrl: './alimenti.component.html',
+  styleUrls: ['./alimenti.component.scss']
 })
 export class AlimentiComponent implements OnInit {
 
-    authService:AuthService;
-    router: Router;
+  displayedColumns: string[] = ['nome', 'descrizione', 'grassi', 'carboidrati', 'proteine', 'action'];
+  dataSource;
 
-    ngOnInit(): void {
-        if (!this.authService.loggedIn.getValue()) {
-            this.router.navigate(['/login']);
-        }
-    }
+  constructor(private alimentiService: AlimentiService) {
+  }
 
+  ngOnInit(): void {
+    this.alimentiService.findAll().subscribe(res => {
+      // @ts-ignore
+      this.dataSource = res;
+    });
+  }
 
+  // tslint:disable-next-line:typedef
+  delete( id){
+    this.alimentiService.deleteAlimento(id).subscribe(del => {
+      // @ts-ignore
+      this.alimentiService.findAll().subscribe(res => {
+        // @ts-ignore
+        this.dataSource = res;
+      });
+    });
+  }
 
 }

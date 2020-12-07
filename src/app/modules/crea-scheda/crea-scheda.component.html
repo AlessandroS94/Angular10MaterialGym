@@ -1,0 +1,63 @@
+<mat-card>
+    <mat-card-header>
+        <i class="material-icons">fitness_center</i>
+        <mat-card-title>Esercizio</mat-card-title>
+        <mat-card-subtitle>Aggiungi esecizio</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="insert()">
+            <p>
+                <mat-form-field appearance="standard">
+                    <mat-label>Nome Scheda</mat-label>
+                    <input formControlName="nome" matInput required placeholder="Scheda forza">
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field appearance="standard">
+                    <mat-label>Descrizione</mat-label>
+                    <input formControlName="descrizione" required matInput placeholder="Scheda con basse ripetizioni">
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field appearance="standard">
+                    <mat-label>Info</mat-label>
+                    <input formControlName="info" required matInput placeholder="Scheda con basse ripetizioni">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="standard">
+                    <mat-label>Data</mat-label>
+                    <input matInput type="date" formControlName="dataInserimento" required>
+                </mat-form-field>
+            </p>
+
+            <p>Esercizi:</p>
+
+                <ul>
+                    <li *ngFor="let esercizio of dataEsercizi ">
+                        <mat-checkbox
+                                formControlName="esercizi"
+                                (change)="updateInsertEsercizi(esercizio,$event)">
+                            {{esercizio.nome}}
+                        </mat-checkbox>
+                    </li>
+                </ul>
+
+            <p>Utenti:</p>
+            <mat-radio-group
+                    formControlName="utente"
+                    aria-labelledby="example-radio-group-label"
+                    class="example-radio-group"
+                    [(ngModel)]="utenteChecked">
+                <mat-radio-button class="example-radio-button" *ngFor="let data of dataUtenti" [value]="data">
+                    Nome: {{data.nome}} Cognome: {{data.cognome}}
+                </mat-radio-button>
+            </mat-radio-group>
+            <button mat-raised-button type="submit" color="accent">Salva</button>
+
+        </form>
+    </mat-card-content>
+</mat-card>
+

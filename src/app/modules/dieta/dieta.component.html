@@ -1,1 +1,44 @@
-<p>dieta works!</p>
+<mat-card class="example-card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Nome dieta</mat-card-title>
+        <mat-card-subtitle>{{dataSource.nome}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <h3>Descrizione</h3>
+        <p>
+            {{dataSource.info}}
+        </p>
+        <h3>Kcal</h3>
+        <p>
+            {{dataSource.kcal}}
+        </p>
+    </mat-card-content>
+</mat-card>
+
+<mat-card *ngFor="let alimento of dataSource.alimenti; index as i; first as isFirst" class="example-card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{alimento.nome}}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+
+    </mat-card-content>
+    <mat-card-content>
+        <h3>Descrizione:</h3><h4>{{alimento.descrizione}}</h4>
+    </mat-card-content>
+
+    <mat-card-content>
+        <h3>Proprietà nutrizionali:</h3>
+        <p>
+          Grassi:  {{alimento.grassi}}g <mat-progress-bar mode="determinate" value="{{alimento.grassi}}"></mat-progress-bar>
+            <br>
+            Carboidrati: {{alimento.carboidrati}}g  <mat-progress-bar mode="determinate" value="{{alimento.carboidrati}}"></mat-progress-bar>
+            <br>
+            Proteine: {{alimento.proteine}}g  <mat-progress-bar mode="determinate" value="{{alimento.proteine}}"></mat-progress-bar>
+
+        </p>
+    </mat-card-content>
+</mat-card>

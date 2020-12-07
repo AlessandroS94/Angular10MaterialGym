@@ -24,30 +24,40 @@ export class EsercizioService {
     }
 
     headers = new HttpHeaders({
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
-        'x-access-token': localStorage.getItem('token')
+        Authorization: 'Bearer ' + localStorage.getItem('token')
     });
 
-    insert(esercizio: Esercizio): Observable<Response> {
+    addEsercizio(esercizio: Esercizio): Observable<Response> {
+        // @ts-ignore
         return this.http.post<Response>(
-            CONSTANST.routes.esercizio.insert, {
+            CONSTANST.routes.esercizio.save, {
                 descrizione: esercizio.descrizione,
                 nome: esercizio.nome,
                 url: esercizio.url,
                 kg: esercizio.kg,
                 ripetizioni: esercizio.ripetizioni
-            });
+            }, {headers: this.headers}).pipe(
+            retry(1),
+            catchError(this.handleError)
+        );
     }
 
     findAll(): Observable<Esercizio[]> {
-        // @ts-ignore
-        console.log(localStorage.getItem('token'));
         // @ts-ignore
         return this.http.get<Esercizio[]>(CONSTANST.routes.esercizio.list, {headers: this.headers}).pipe(
             retry(1),
             catchError(this.handleError)
         );
     }
+
+    deleteEsercizio(esercizio: Esercizio | number): Observable<any> {
+        const idx = typeof esercizio === 'number' ? esercizio : esercizio.id;
+        return this.http.delete<Esercizio>(CONSTANST.routes.esercizio.delete + idx, {headers: this.headers}).pipe(
+            retry(1),
+            catchError(this.handleError)
+        );
+    }
+
 
     // tslint:disable-next-line:typedef
     private handleError(error: HttpErrorResponse) {
@@ -60,6 +70,10 @@ export class EsercizioService {
             console.error(
                 `Backend returned code ${error.status}, ` +
                 `body was: ${error.error}`);
+            if (error.status === 403 || error.status === 401) {
+                localStorage.removeItem('token');
+
+            }
         }
         // return an observable with a user-facing error message
         return throwError(

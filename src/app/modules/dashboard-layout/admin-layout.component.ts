@@ -15,15 +15,6 @@ import {ConfirmComponent} from '../../components/confirm/confirm.component';
 })
 
 export class AdminLayoutComponent implements OnInit {
-    isLoggedIn$: Observable<boolean>;
-    mobileQuery: MediaQueryList;
-    isAdmin: boolean;
-    isUser: boolean;
-
-    private mobileQueryListener: () => void;
-
-    @ViewChild('progressBar', {static: false})
-    progressBar: ElementRef;
 
     constructor(
         private authService: AuthService,
@@ -42,6 +33,18 @@ export class AdminLayoutComponent implements OnInit {
         });
         this.checkRole();
     }
+    isLoggedIn$: Observable<boolean>;
+    mobileQuery: MediaQueryList;
+    isAdmin: boolean;
+    isUser: boolean;
+    menu = true;
+
+    private mobileQueryListener: () => void;
+
+    @ViewChild('progressBar', {static: false})
+    progressBar: ElementRef;
+
+    void;
 
     ngOnInit() {
         this.isLoggedIn$ = this.authService.isLoggedIn;
@@ -65,6 +68,9 @@ export class AdminLayoutComponent implements OnInit {
             if (result) {
                 this.authService.loggedIn.next(false);
                 localStorage.removeItem('token');
+                localStorage.removeItem('id');
+                localStorage.removeItem('email');
+                localStorage.removeItem('role');
                 this.router.navigate(['/login']);
             }
         });
@@ -101,13 +107,22 @@ export class AdminLayoutComponent implements OnInit {
     }
 
     checkRole(): void {
-        if (localStorage.getItem('role') === 'ROLE_ADMIN'){
-            this.isAdmin = true ;
-        }
-        else {
-            this.isUser = true ;
+        if (localStorage.getItem('role') === 'ROLE_ADMIN') {
+            this.isAdmin = true;
+        } else {
+            this.isUser = true;
         }
 
+    }
+
+    // tslint:disable-next-line:typedef
+    show_hideMenu() {
+        if (!this.menu) {
+            this.menu = true;
+        }
+        else {
+            this.menu = false;
+        }
     }
 
 }

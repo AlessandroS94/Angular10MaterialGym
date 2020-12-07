@@ -2,7 +2,7 @@
     <mat-card-header>
         <i class="material-icons">fitness_center</i>
         <mat-card-title>Esercizio</mat-card-title>
-        <mat-card-subtitle>Aggiungi e rimuovi esercizi</mat-card-subtitle>
+        <mat-card-subtitle>Aggiungi esercizio</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
         <form [formGroup]="form" (ngSubmit)="insert()">
@@ -20,8 +20,8 @@
         </p>
         <p>
             <mat-form-field appearance="standard">
-                <mat-label>Url</mat-label>
-                <input formControlName="url" required matInput placeholder="https://youtube.com">
+                <mat-label>Codice video Youtube</mat-label>
+                <input formControlName="url" required matInput placeholder="https://www.youtube.com/watch?v=   (SVx2k8OZG48) ">
             </mat-form-field>
         </p>
         <p>
@@ -33,12 +33,12 @@
         <p>
             <mat-form-field appearance="standard">
                 <mat-label>Pesi</mat-label>
-                <input formControlName="pesi" required matInput placeholder="50KG">
+                <input formControlName="kg" required matInput placeholder="50KG">
             </mat-form-field>
         </p>
         <button mat-raised-button type="submit" color="accent">Salva</button>
+
         </form>
-        <button mat-raised-button (click)="list()" color="accent">List</button>
     </mat-card-content>
 </mat-card>
 

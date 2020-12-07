@@ -7,7 +7,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {ConfirmComponent} from '../../components/confirm/confirm.component';
 import {MatDialog} from '@angular/material/dialog';
 import {AuthService} from '../../services/auth.service';
-import {Observable} from 'rxjs';
+
 
 @Component({
     selector: 'app-crea-esercizio',
@@ -22,12 +22,13 @@ export class CreaEsercizioComponent implements OnInit {
             descrizione: new FormControl(''),
             url: new FormControl(''),
             ripetizioni: new FormControl(''),
-            pesi: new FormControl(''),
+            kg: new FormControl(''),
         }
     );
 
     public isLoading = false;
-    private authService: AuthService;
+    // @ts-ignore
+    private authService: AuthService = new AuthService();
 
     constructor(private fb: FormBuilder,
                 private esercizioService: EsercizioService,
@@ -50,32 +51,26 @@ export class CreaEsercizioComponent implements OnInit {
                 null,
                 [
                     Validators.required,
-                    Validators.minLength(6),
-                    Validators.maxLength(12)
+                    Validators.minLength(3),
                 ]
             ],
             url: [
                 null,
                 [
                     Validators.required,
-                    Validators.minLength(6),
-                    Validators.maxLength(12)
+                    Validators.minLength(3),
                 ]
             ],
             ripetizioni: [
                 null,
                 [
                     Validators.required,
-                    Validators.minLength(6),
-                    Validators.maxLength(12)
                 ]
             ],
-            pesi: [
+            kg: [
                 null,
                 [
                     Validators.required,
-                    Validators.minLength(6),
-                    Validators.maxLength(12)
                 ]
             ],
         });
@@ -90,42 +85,32 @@ export class CreaEsercizioComponent implements OnInit {
 
     }
 
+    // tslint:disable-next-line:typedef
     public insert() {
-
-        this.esercizioService.insert(this.form.value).subscribe(
-            (data: any) => {
-                this.isLoading = false;
-                if (data) {
-                    this.esercizioService.isSuccess.next(true);
-                    this.router.navigate(['/dashboard']);
-                } else {
+        if (this.form.valid)
+        {
+            this.esercizioService.addEsercizio(this.form.value).subscribe(
+                (data: any) => {
+                    this.isLoading = false;
                     this.snack.openFromComponent(SnackbarComponent, {
-                        data: {data},
+                        data: 'Salvato',
                         duration: 3000
                     });
+                },
+                (error) => {
+                    this.openDialog();
+                    console.log(error);
+                    this.isLoading = false;
                 }
-            },
-            (error) => {
-                this.openDialog();
-                console.log(error);
-                this.isLoading = false;
-            }
-        );
-    }
-
-    // tslint:disable-next-line:typedef
-    public list(){
-        const response = this.esercizioService.findAll().subscribe(res => {
-            console.log(res);
-        });
-        console.log(response);
+            );
+        }
     }
 
     openDialog(): void {
         const dialogRef = this.dialog.open(ConfirmComponent, {
             width: '250px',
             data: {
-                title: 'Esercizioo',
+                title: 'Esercizio',
                 message: 'Qualcosa è andato storto',
                 buttonCancel: 'Riprova',
                 buttonOk: 'Torna alla Home'

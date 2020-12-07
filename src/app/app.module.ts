@@ -29,6 +29,12 @@ import { EsercizioComponent } from './modules/esercizio/esercizio.component';
 import { DieteComponent } from './modules/diete/diete.component';
 import { AlimentiComponent } from './modules/alimenti/alimenti.component';
 import { CreaEsercizioComponent } from './modules/crea-esercizio/crea-esercizio.component';
+import { CreaSchedaComponent } from './modules/crea-scheda/crea-scheda.component';
+import { SchedeComponent } from './modules/schede/schede.component';
+import { SchedaUserComponent } from './modules/scheda-user/scheda-user.component';
+import { SafePipe } from './pipe/safe.pipe';
+import { CreaAlimentiComponent } from './modules/crea-alimenti/crea-alimenti.component';
+import { CreaDietaComponent } from './modules/crea-dieta/crea-dieta.component';
 
 
 @NgModule({
@@ -48,6 +54,12 @@ import { CreaEsercizioComponent } from './modules/crea-esercizio/crea-esercizio.
         DieteComponent,
         AlimentiComponent,
         CreaEsercizioComponent,
+        CreaSchedaComponent,
+        SchedeComponent,
+        SchedaUserComponent,
+        SafePipe,
+        CreaAlimentiComponent,
+        CreaDietaComponent,
     ],
     imports: [
         SharedModule,

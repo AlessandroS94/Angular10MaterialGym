@@ -1,0 +1,49 @@
+mat-card {
+  overflow: auto;
+  height: auto;
+  width: 40vw;
+  margin:5vh auto 9vh auto!important;
+}
+mat-form-field {
+  width: 100%;
+  margin: 5px;
+}
+
+button {
+  margin-left: 90%;
+}
+
+.separate{
+  margin-bottom: 32px;
+}
+
+.example-h2 {
+  margin: 10px;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 2%;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.example-radio-button {
+  margin: 5px;
+}

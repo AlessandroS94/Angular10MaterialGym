@@ -1,6 +1,6 @@
 <div class="animated fadeIn dashboard">
     <h3 > Ciao {{email}}</h3>
-    <mat-card class="dashboard-item item-teal float-item" *ngIf="isUser" routerLink="dashboard/esercizio">
+    <mat-card class="dashboard-item item-teal float-item" *ngIf="isUser" routerLink="dashboard/schedaUtente">
         <i class="material-icons dashboard-icon">fitness_center</i>
         <mat-card-header>
             <mat-card-title>
@@ -9,12 +9,32 @@
         </mat-card-header>
     </mat-card>
 
-    <mat-card class="dashboard-item item-brown float-item" *ngIf="isUser" routerLink="dashboard/dieta">
+    <mat-card class="dashboard-item item-teal float-item" *ngIf="isAdmin" routerLink="dashboard/creaEsercizio">
+        <i class="material-icons dashboard-icon">fitness_center</i>
+        <mat-card-header>
+            <mat-card-title>
+                <h3> Crea Esercizio</h3>
+            </mat-card-title>
+        </mat-card-header>
+
+    </mat-card>
+
+    <mat-card class="dashboard-item item-blue float-item" *ngIf="isAdmin" routerLink="dashboard/creaAlimento">
         <i class="material-icons dashboard-icon">fastfood</i>
+        <mat-card-header>
+            <mat-card-title>
+                <h3>Crea Alimento</h3>
+            </mat-card-title>
+        </mat-card-header>
+    </mat-card>
+
+    <mat-card class="dashboard-item item-blue float-item" *ngIf="isUser" routerLink="dashboard/dieta">
+        <i class="material-icons dashboard-icon">food_bank</i>
         <mat-card-header>
             <mat-card-title>
                 <h3>Dieta</h3>
             </mat-card-title>
         </mat-card-header>
     </mat-card>
+
 </div>

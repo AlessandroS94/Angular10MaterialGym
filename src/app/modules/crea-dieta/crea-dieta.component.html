@@ -1,0 +1,64 @@
+<mat-card>
+    <mat-card-header>
+        <i class="material-icons">food_bank</i>
+        <mat-card-title>Dieta</mat-card-title>
+        <mat-card-subtitle>Aggiungi dieta</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="insert()">
+            <p>
+                <mat-form-field appearance="standard">
+                    <mat-label>Nome Dieta</mat-label>
+                    <input formControlName="nome" matInput required placeholder="Dieta Dimagrante">
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field appearance="standard">
+                    <mat-label>Info</mat-label>
+                    <input formControlName="info" required matInput placeholder="Dieta giornaliera">
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field appearance="standard">
+                    <mat-label>Kcal</mat-label>
+                    <input formControlName="kcal" required matInput type="number" placeholder="2000">
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field appearance="standard">
+                    <mat-label>Data Scadenza</mat-label>
+                    <input matInput type="date" formControlName="data_scadenza" required>
+                </mat-form-field>
+            </p>
+
+            <p>Alimenti:</p>
+
+            <ul>
+                <li *ngFor="let alimento of dataAlimenti ">
+                    <mat-checkbox
+                            formControlName="alimenti"
+                            (change)="updateInsertAlimenti(alimento,$event)">
+                        {{alimento.nome}}
+                    </mat-checkbox>
+                </li>
+            </ul>
+
+            <p>Utenti:</p>
+            <mat-radio-group
+                    formControlName="utente"
+                    aria-labelledby="example-radio-group-label"
+                    class="example-radio-group"
+                    [(ngModel)]="utenteChecked">
+                <mat-radio-button class="example-radio-button" *ngFor="let data of dataUtenti" [value]="data">
+                    Nome: {{data.nome}} Cognome: {{data.cognome}}
+                </mat-radio-button>
+            </mat-radio-group>
+            <button mat-raised-button type="submit" color="accent">Salva</button>
+
+        </form>
+    </mat-card-content>
+</mat-card>
+
