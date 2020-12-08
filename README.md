@@ -37,5 +37,5 @@ Registration
 View Exercise
 ![Algorithm schema](./images/View_Exercise.png)
 
-##Server 
+## Server 
 https://github.com/alexraimondi91/Gym
