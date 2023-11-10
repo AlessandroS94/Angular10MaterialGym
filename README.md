@@ -1,5 +1,10 @@
 # Angular10MaterialGym
 PWA Project - Gym Accademic project
+
+[![Angular](https://img.shields.io/badge/Angular-red)](https://angular.com/)
+[![HTML5](https://img.shields.io/badge/HTML5-Markup_Language-orange)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Programming_Language-blue)](https://www.typescriptlang.org/)
+
 ## Description
 This project is developed in Italian without internationalization.
 The goal was to manage the diet and exercises for a particular user. Each diet has a set of foods and each card has a set of exercises.
